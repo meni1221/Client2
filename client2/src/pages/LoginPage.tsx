@@ -1,15 +1,18 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const authContext = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navegate = useNavigate()
 
   const handelSbmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     await authContext?.login({ email, password });
+    navegate("/admin")
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,7 +42,7 @@ export default function LoginPage() {
       required
       />
 
-        <button type="submit">LOGIN</button>
+        <button type="submit" >LOGIN</button>
     </form>
   );
 }
