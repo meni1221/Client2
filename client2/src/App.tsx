@@ -1,9 +1,13 @@
-import React from 'react'
+import Layout from "./layout/layout";
+import AuthProvider from "./providers/AuthProvider";
+import AppRouter from "./router/AppRouter";
 
 export default function App() {
   return (
-    <h1>
-     Hello 
-    </h1>
+    <>
+    <AuthProvider>
+     <Layout children={<AppRouter/>}/>
+    </AuthProvider>
+    </>
   )
 }
