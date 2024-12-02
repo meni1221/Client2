@@ -1,6 +1,6 @@
 import UserComponemt from "../components/UserComponent";
 import BusComponent from "../components/BusComponent";
-import LineComponent from "../components/lineComponent";
+import LineComponent from "../components/LineComponent";
 export default function AdminPage() {
   return (
     <>

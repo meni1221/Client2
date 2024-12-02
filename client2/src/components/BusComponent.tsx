@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { Bus } from "../interface/bus";
 import useFetch from "../hooks/useFetch";
-interface Props{
-  busProps:Bus
-}
-export default function BusComponent({busProps}:Props) {
-  const { data, GET } = useFetch("http://localhost:7891/users");
+
+export default function BusComponent() {
+  const { data, GET } = useFetch("http://localhost:7891/buses");
   const [buses, setBuses] = useState<Bus[]>([]);
 
   useEffect(() => {
@@ -21,18 +19,18 @@ export default function BusComponent({busProps}:Props) {
     <>
       <div>
         {buses && buses.length > 0 ? (
-          buses.map((bus) => (
-            <tr>
-              <th>{busProps.licensePlate}</th>
-              <th>{busProps.busModel}</th>
-              <th>{busProps.capacity}</th>
-              <th>{busProps.status}</th>
-              <th>{busProps.driverID}</th>
-              <th>{busProps.routeID}</th>
-            </tr>
+          buses.map((busProps) => (
+            <div>
+              <p>{busProps.licensePlate}</p>
+              <p>{busProps.busModel}</p>
+              <p>{busProps.capacity}</p>
+              <p>{busProps.status}</p>
+              <p>{busProps.driverID}</p>
+              <p>{busProps.routeID}</p>
+            </div>
           ))
         ) : (
-          <p> not users </p>
+          <p> not buses </p>
         )}
       </div>
     </>

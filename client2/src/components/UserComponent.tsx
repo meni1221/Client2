@@ -3,10 +3,8 @@ import { AuthContext } from "../providers/AuthProvider";
 import useFetch from "../hooks/useFetch";
 import { User } from "../interface/user";
 
-interface Props {
-  userProps: User;
-}
-export default function UserComponemt({userProps}:Props) {
+
+export default function UserComponemt() {
   const { user } = useContext(AuthContext) ?? {};
   const { data, GET } = useFetch("http://localhost:7891/users");
   const [users, setUsers] = useState<User[]>([]);
@@ -23,11 +21,17 @@ export default function UserComponemt({userProps}:Props) {
   return (
     <>
       <div>
-            <tr>
+        {users && users.length > 0 ? (
+          users.map((userProps) => (
+            <div>
               <th>{userProps.name}</th>
               <th>{userProps.email}</th>
               <th>{userProps.role}</th>
-            </tr>
+            </div>
+          ))
+        ) : (
+          <p> not users </p>
+        )}
       </div>
     </>
   );
