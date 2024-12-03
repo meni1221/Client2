@@ -65,5 +65,24 @@ export default function useFetch<T>(url: string): any {
     }
   };
 
-  return { data, error, GET, POST, PATCH };
+   //   --------------DELETE method--------------
+   const DELETE = async (id: string) => {
+    try {
+      const response = await fetch(`${url}/:${id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(`error is: ${errorData.error.message}`);
+      }
+      const result = await response.json();
+      setData(result);
+    } catch (error) {
+      setError((error as Error).message);
+    }
+  };
+
+  return { data, error, GET, POST, PATCH, DELETE };
 }
