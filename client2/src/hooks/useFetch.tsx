@@ -3,6 +3,8 @@ import { useState } from "react";
 export default function useFetch<T>(url: string): any {
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  
   //   -----------GET-----------
   const GET = async () => {
     try {
