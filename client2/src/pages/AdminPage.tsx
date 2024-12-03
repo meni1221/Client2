@@ -8,13 +8,10 @@ export default function AdminPage() {
         <UserComponemt />
       </div>
       <div>
-
         <BusComponent />
-
       </div>
       <div>
-
-        <LineComponent/>
+        <LineComponent />
       </div>
     </>
   );
