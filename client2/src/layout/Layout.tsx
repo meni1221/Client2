@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import Main from "./main";
 
 interface Props {
@@ -7,6 +8,8 @@ export default function Layout({ children }: Props) {
   return (
     <>
       <Main children={children} />
+      <Footer/>
+      
     </>
   );
 }
