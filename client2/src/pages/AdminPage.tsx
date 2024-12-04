@@ -3,7 +3,7 @@ import BusComponent from "../components/BusComponent";
 import LineComponent from "../components/LineComponent";
 export default function AdminPage() {
   return (
-    <>
+    <><div className="main">
       <div>
         <UserComponemt />
       </div>
@@ -12,6 +12,7 @@ export default function AdminPage() {
       </div>
       <div>
         <LineComponent />
+      </div>
       </div>
     </>
   );
