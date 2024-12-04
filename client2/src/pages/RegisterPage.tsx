@@ -17,7 +17,7 @@ export default function RegisterPage() {
     console.log(newUser);
     POST("users",newUser);
 
-    // navegate("/login");
+    navegate("/login");
   };
   return (
     <div>
