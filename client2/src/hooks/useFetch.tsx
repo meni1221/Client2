@@ -4,7 +4,6 @@ export default function useFetch<T>(url: string): any {
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  
   //   -----------GET-----------
   const GET = async () => {
     try {
@@ -17,6 +16,35 @@ export default function useFetch<T>(url: string): any {
       setData(result);
     } catch (error) {
       setError((error as Error).message || "Unknown error");
+    }
+  };
+  //   -----------GETBYCALL-----------
+  const GETBYCALL = async (page: number,limit:number) => {
+    try {
+      const response = await fetch(`?page=${page}&limit=${limit}`);
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(`HTTP error! ${errorData.error.message}`);
+      }
+      const result = await response.json();
+      setData(result);
+    } catch (error: unknown) {
+      setError((error as Error).message || "An unknown error occurred.");
+    }
+  };
+
+  //   -----------GETONE-----------
+  const GETONE = async (id: string) => {
+    try {
+      const response = await fetch(`${url}/${id}`);
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(`HTTP error! ${errorData.error.message}`);
+      }
+      const result = await response.json();
+      setData(result);
+    } catch (error: unknown) {
+      setError((error as Error).message || "An unknown error occurred.");
     }
   };
 
@@ -59,14 +87,14 @@ export default function useFetch<T>(url: string): any {
       }
       const result = await response.json();
       setData(result);
-    } catch (error :unknown) {
+    } catch (error: unknown) {
       setError((error as Error).message || "Unknown error");
       throw error;
     }
   };
 
-   //   --------------DELETE method--------------
-   const DELETE = async (id: string) => {
+  //   --------------DELETE method--------------
+  const DELETE = async (id: string) => {
     try {
       const response = await fetch(`${url}/:${id}`, {
         method: "DELETE",
@@ -84,5 +112,5 @@ export default function useFetch<T>(url: string): any {
     }
   };
 
-  return { data, error, GET, POST, PATCH, DELETE };
+  return { data, error, GET, GETBYCALL, GETONE, POST, PATCH, DELETE };
 }
