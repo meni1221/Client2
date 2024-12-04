@@ -12,8 +12,8 @@ export default function HomePage() {
   return (
     <>
       <div className="Home">
-        <p className="page-header">אחי אתה לא מחובר אנא פנה הלעמוד לוגין והתחבר
-        </p>
+        <h3 className="page-header">אחי אתה לא מחובר אנא פנה הלעמוד לוגין והתחבר
+        </h3>
         <button onClick={handelSbmit}>לעמוד לוגין</button>
       </div>
     </>
