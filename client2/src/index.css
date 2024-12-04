@@ -149,6 +149,22 @@ td {
   width: 300px;
 }
 
+.page-header {
+  text-align: center;
+  padding: 20px;
+  background-color: #ffac12d6;
+  border: 2px solid #f9f7fc;
+  color: #ffffff;
+  border-radius: 8px;
+  margin: 20px auto;
+  width: 600px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
 
 .btnFromTable{
 display: flex;
